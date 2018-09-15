@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: heroes
+    
+server:
+  port: 8080
+       
+oce:
+  retraso: 5 

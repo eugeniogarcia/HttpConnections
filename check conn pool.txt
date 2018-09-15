@@ -1,0 +1,67 @@
+https://howtodoinjava.com/spring-restful/resttemplate-httpclient-java-config/
+
+
+
+host 10.32.90.1
+host -t a www.google.com
+
+
+Crear un archivo formato.txt, y pegar:
+
+ 
+
+    time_namelookup:  %{time_namelookup}\n
+
+       time_connect:  %{time_connect}\n
+
+    time_appconnect:  %{time_appconnect}\n
+
+   time_pretransfer:  %{time_pretransfer}\n
+
+      time_redirect:  %{time_redirect}\n
+
+time_starttransfer:  %{time_starttransfer}\n
+
+                    ----------\n
+
+         time_total:  %{time_total}\n
+
+ 
+
+Para crearlo, usamos vi
+
+De entrada vi se abre en modo comando. Pulsado i entra en modo edición
+
+Para pasar a modo comando de nuevo, pulsar ESC
+
+comandos
+
+:write
+
+:q
+
+:q!
+
+
+
+curl -k -X GET https://preprod-oce-gp-userprofile.scapp-corp.swisscom.com -w "@./formato.txt" -o /dev/null
+
+En este hacemos 10 peticiones
+curl -k -X GET https://preprod-oce-gp-userprofile.scapp-corp.swisscom.com?[1-10] -w "@./formato.txt" -o /dev/null
+
+curl -k -X GET blueadit-whitelist-dev.scapp-corp.swisscom.com -w "@./formato.txt" -o /dev/null
+
+La opción -o que ponemos indica que la salida sea la consola
+ 
+
+Para conectar via ssh
+
+cf enable-ssh MY-AWESOME-APP
+
+cf disable-ssh MY-AWESOME-APP
+
+cf allow-space-ssh SPACE-NAME
+
+cf disallow-space-ssh SPACE-NAME
+
+cf ssh MY-AWESOME-APP

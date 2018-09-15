@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: heroes_passthrough
+    
+server:
+  port: 8085
+  servlet:
+    session:
+      cookie:
+        domain: .localhost:8085
+        http-only: true
+        path: /
+        
+# we don't want to pollute the log with information not related to our test
+logging:
+  level:
+    root: ERROR
+    com.swisscom.oce.mise.rest: INFO
+
+oce:
+  mise:
+    rest:
+      connect-timeout: 20000
+      read-timeout: 20000
+
+#Un total de 20 conexiones. La ruta http://localhost:8080 tiene un maximo de 5. 
+#El resto de rutas por defecto un maximo de 10
+  #Maximo de conexiones
+  #Una ruta por defecto no puede consumir mas que esto
+  #Aunque podemos especificar valores concretos por cada ruta
+httpconnpool:
+  default_keep_alive_time: 20
+  maxTotal: 20
+  defaultMaxPerRoute: 10
+  maxPerRoutes:
+    -
+      scheme: http
+      host: localhost
+      port: 8080
+      maxPerRoute: 5
